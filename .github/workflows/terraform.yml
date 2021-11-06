@@ -1,0 +1,22 @@
+on:
+  push:
+    branches:
+      - main
+    paths: 
+      - iac/**
+      - .github/workflows/terraform.yml
+jobs:
+  create-infra:
+    name: Setup Infrastructure
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: 'eu-west-1'
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 0.14.9
+      - run: cd iac && terraform init
+      - run: cd iac && terraform apply -auto-approve
