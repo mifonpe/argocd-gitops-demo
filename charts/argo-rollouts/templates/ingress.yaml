@@ -53,8 +53,8 @@ spec:
                 port:
                   number: {{ $svcPort }}
               {{- else }}
-              serviceName: {{ default $fullName $.Values.ingress.hosts.serviceName }}
-              servicePort: {{ default $svcPort $.Values.ingress.hosts.servicePort }}
+              serviceName: {{ $fullName }}
+              servicePort: {{ $svcPort }}
               {{- end }}
           {{- end }}
     {{- end }}

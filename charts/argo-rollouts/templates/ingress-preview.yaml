@@ -53,8 +53,8 @@ spec:
                 port:
                   number: {{ $svcPort }}
               {{- else }}
-              serviceName: {{ printf "%s-%s" (default $fullName $.Values.ingressCanary.hosts.serviceName) }}
-              servicePort: {{ default $svcPort $.Values.ingressCanary.hosts.servicePort }}
+              serviceName: {{ $fullName }}
+              servicePort: {{ $svcPort }}
               {{- end }}
           {{- end }}
     {{- end }}

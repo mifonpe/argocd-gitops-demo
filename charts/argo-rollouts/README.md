@@ -1,6 +1,6 @@
 # argo-rollouts
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: blue](https://img.shields.io/badge/AppVersion-blue-informational?style=flat-square)
 
 This chart deploys a sample Argo Rollout application
 
@@ -56,15 +56,20 @@ helm install my-release migueles/argo-rollouts -f values.yaml
 | ingress.annotations."ingress.kubernetes.io/proxy-body-size" | string | `"100M"` |  |
 | ingress.annotations."kubernetes.io/ingress.class" | string | `"nginx"` |  |
 | ingress.className | string | `""` |  |
-| ingress.enabled | bool | `false` |  |
+| ingress.enabled | bool | `true` |  |
 | ingress.hosts[0].host | string | `"canary.dev.argoproj.io"` |  |
 | ingress.hosts[0].paths[0].path | string | `"/"` |  |
 | ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
-| ingress.hosts[1].host | string | `"canary-preview.dev.argoproj.io"` |  |
-| ingress.hosts[1].paths[0].path | string | `"/"` |  |
-| ingress.hosts[1].paths[0].pathType | string | `"ImplementationSpecific"` |  |
-| ingress.hosts[1].serviceName | string | `"canary-demo-preview"` |  |
 | ingress.tls | list | `[]` |  |
+| ingressCanary.annotations."ingress.kubernetes.io/app-root" | string | `"/"` |  |
+| ingressCanary.annotations."ingress.kubernetes.io/proxy-body-size" | string | `"100M"` |  |
+| ingressCanary.annotations."kubernetes.io/ingress.class" | string | `"nginx"` |  |
+| ingressCanary.className | string | `""` |  |
+| ingressCanary.enabled | bool | `true` |  |
+| ingressCanary.hosts[0].host | string | `"canary-preview.dev.argoproj.io"` |  |
+| ingressCanary.hosts[0].paths[0].path | string | `"/"` |  |
+| ingressCanary.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
+| ingressCanary.tls | list | `[]` |  |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
