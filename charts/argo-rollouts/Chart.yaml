@@ -1,0 +1,16 @@
+apiVersion: v2
+name: argo-rollouts
+description: |
+  This chart deploys a sample Argo Rollout application
+type: application
+version: 0.1.0
+appVersion: blue
+maintainers:
+- name: mmingorance-dh
+- name: mifonpe
+icon: https://github.com/kubernetes/kubernetes/raw/master/logo/logo.png
+keywords:
+- argocd
+- argocd-rollouts
+- rollouts
+home: https://github.com/mifonpe/argocd-gitops-demo

@@ -46,7 +46,7 @@ All commands to be run from the root of this repo.
 `markdown-lint`:
 
   ```console
-  docker run --rm -v "$PWD:/helm-charts" avtodev/markdown-lint:v1.5.0 --config /helm-charts/ci-charts/markdown-lint.yaml /helm-charts/charts/**/*.md
+  docker run --rm -v "$PWD:/charts" avtodev/markdown-lint:v1.5.0 --config /helm-charts/ci-charts/markdown-lint.yaml /charts/charts/**/*.md
   ```
 
 `helm-docs`:

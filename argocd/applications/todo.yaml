@@ -15,12 +15,8 @@ spec:
     targetRevision: 0.1.1
     helm:
       releaseName: todo
-      values: |
-        autoscaling:
-          enabled: false
-        ingress:
-          enabled: false
+      valueFiles:
+        - ../../values/todo.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
-

@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: chartmuseum
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/mifonpe/argocd-gitops-demo
+      targetRevision: HEAD
+      path: values/chartmuseum.yaml
+    chart: chartmuseum
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
