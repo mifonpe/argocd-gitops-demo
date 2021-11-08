@@ -14,3 +14,16 @@ keywords:
 - argocd-rollouts
 - rollouts
 home: https://github.com/mifonpe/argocd-gitops-demo
+dependencies:
+- name: argo-cd
+  version: 3.26.5
+  repository: https://argoproj.github.io/argo-helm
+  condition: argo-cd.enabled
+  tags:
+    - argo-suite
+- name: argo-rollouts
+  version: 2.3.0
+  repository: https://argoproj.github.io/argo-helm
+  condition: argo-rollouts.enabled
+  tags:
+    - argo-suite
