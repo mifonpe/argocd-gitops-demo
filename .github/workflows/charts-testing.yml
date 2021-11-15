@@ -25,8 +25,7 @@ jobs:
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |
-          current_branch=$(echo ${GITHUB_REF##*/})
-          changed=$(ct list-changed  --target-branch $current_branch)
+          changed=$(ct list-changed  --target-branch no-ticket-argo-rollouts)
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
           fi
