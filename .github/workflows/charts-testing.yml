@@ -24,6 +24,8 @@ jobs:
 
       - name: Run chart-testing (list-changed)
         id: list-changed
+        with:
+          target-branch: main
         run: |
           changed=$(ct list-changed)
           if [[ -n "$changed" ]]; then
