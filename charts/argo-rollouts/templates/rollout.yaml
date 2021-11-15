@@ -1,0 +1,125 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: {{ include "argo-rollouts.fullname" . }}
+  labels:
+    {{- include "argo-rollouts.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "argo-rollouts.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "argo-rollouts.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "argo-rollouts.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+  strategy:
+    {{- if .Values.rollout.canary }}
+    canary:
+      canaryService: {{ include "argo-rollouts.fullname.preview" . }}
+      maxSurge: {{ default "25%" .Values.rollout.canary.maxSurge }}
+      maxUnavailable: {{ default "0" .Values.rollout.canary.maxUnavailable }}
+      dynamicStableScale: {{ default "false" .Values.rollout.canary.dynamicStableScale }}
+      {{- if .Values.rollout.canary.abortScaleDownDelaySeconds }}
+      abortScaleDownDelaySeconds: {{ .Values.rollout.canary.abortScaleDownDelaySeconds }}
+      {{- end }}
+      {{- if .Values.rollout.canary.analysis }}
+      analysis:
+        templates:
+          - templateName: {{ include "argo-rollouts.fullname" . }}-rollout-analysis
+        {{- if .Values.rollout.canary.analysis.args }}
+        args:
+        {{- range .Values.rollout.canary.analysis.args }}
+          - name: {{ .name }}
+            value: {{ .value  }}
+        {{- end }}
+        {{- end }}
+        {{- if .Values.rollout.canary.analysis.startingStep }}
+        startingStep: {{ .Values.rollout.canary.startingStep }}
+        {{- end}}
+      steps:
+      {{- with .Values.rollout.canary.steps }}
+        {{- toYaml $.Values.rollout.canary.steps | nindent 8 }}
+      {{- end }}
+      {{- end }}
+      {{- end }}
+      {{- if .Values.rollout.blueGreen }}
+    blueGreen:
+      autoPromotionEnabled: {{ default "false" .Values.rollout.blueGreen.autoPromotionEnabled }}
+      activeService: {{ include "argo-rollouts.fullname" . }}
+      previewService: {{ include "argo-rollouts.fullname" . }}-preview
+      {{- if .Values.rollout.blueGreen.prePromotionAnalysis }}
+      prePromotionAnalysis:
+        templates:
+          {{- range .Values.rollout.blueGreen.prePromotionAnalysis.templates }}
+          - {{ . }}
+          {{- end }}
+        args:
+          {{- range .Values.rollout.blueGreen.prePromotionAnalysis.args }}
+          - name: {{ .name }}
+            value: {{ .value  }}
+          {{- end }}
+      {{- end }}
+      {{- if .Values.rollout.blueGreen.autoPromotionSeconds }}
+      autoPromotionSeconds: {{ .Values.rollout.blueGreen.autoPromotionSeconds }}
+      {{- end }}
+      {{- if .Values.rollout.blueGreen.antiAffinity }}
+      antiAffinity:
+        {{- toYaml .Values.rollout.blueGreen.antiAffinity | nindent 8 }}
+      {{- end }}
+      previewReplicaCount: {{ default .Values.replicaCount .Values.rollout.blueGreen.previewReplicaCount }}
+      {{- if .Values.rollout.blueGreen.scaleDownDelaySeconds }}
+      scaleDownDelaySeconds: {{ .Values.rollout.blueGreen.scaleDownDelaySeconds }}
+      {{- end }}
+      {{- if .Values.rollout.blueGreen.scaleDownDelayRevisionLimit }}
+      scaleDownDelayRevisionLimit: {{ .Values.rollout.blueGreen.scaleDownDelayRevisionLimit }}
+      {{- end }}
+    {{- end }}
+
+

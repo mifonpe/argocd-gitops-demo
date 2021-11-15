@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prometheus-stack
+  namespace: prometheus
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/mifonpe/argocd-gitops-demo
+      targetRevision: HEAD
+      path: values/kube-prometheus-stack
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default

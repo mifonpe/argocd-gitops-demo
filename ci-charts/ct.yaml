@@ -4,3 +4,4 @@ chart-dirs:
 chart-repos:
   - stable=https://charts.helm.sh/stable
   - bitnami=https://charts.bitnami.com/bitnami
+  - argo=https://argoproj.github.io/argo-helm
