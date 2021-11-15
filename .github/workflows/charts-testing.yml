@@ -38,5 +38,13 @@ jobs:
         uses: helm/kind-action@v1.2.0
         if: steps.list-changed.outputs.changed == 'true'
 
+      - name: Get Charts to exclude from installation
+        uses: mikefarah/yq@master
+        id: get-exclude-install-charts
+        with:
+          cmd: yq e '.exclude-charts[]' 'ci-charts/exclude-install-charts.yaml'
+
       - name: Run chart-testing (install)
-        run: ct install --config ci-charts/ct.yaml
+        run: |
+          excluded_charts=$(echo $list | tr '\n' ',')
+          ct install --config ci-charts/ct.yaml --exclude-charts $(echo $excluded_charts)
