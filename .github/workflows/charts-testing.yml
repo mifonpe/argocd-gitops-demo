@@ -24,10 +24,8 @@ jobs:
 
       - name: Run chart-testing (list-changed)
         id: list-changed
-        with:
-          target-branch: ${GITHUB_REF##*/}
         run: |
-          changed=$(ct list-changed)
+          changed=$(ct list-changed  --target-branch ${GITHUB_REF##*/})
           if [[ -n "$changed" ]]; then
             echo "::set-output name=changed::true"
           fi
