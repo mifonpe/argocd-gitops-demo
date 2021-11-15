@@ -47,4 +47,4 @@ jobs:
       - name: Run chart-testing (install)
         run: |
           excluded_charts=$(echo $list | tr '\n' ',')
-          ct install --config ci-charts/ct.yaml --exclude-charts $(echo $excluded_charts)
+          ct install --config ci-charts/ct.yaml --excluded-charts $(echo $excluded_charts)
