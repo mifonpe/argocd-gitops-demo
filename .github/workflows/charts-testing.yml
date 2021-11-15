@@ -7,8 +7,9 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+
+      - name: Fetch history
+        run: git fetch --prune --unshallow
 
       - name: Set up Helm
         uses: azure/setup-helm@v1
@@ -21,21 +22,15 @@ jobs:
 
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.1.0
-
-      - name: Run chart-testing (list-changed)
-        id: list-changed
-        run: |
-          changed=$(ct list-changed  --target-branch no-ticket-argo-rollouts)
-          if [[ -n "$changed" ]]; then
-            echo "::set-output name=changed::true"
-          fi
+        with:
+          config: ci-charts/ct.yaml
 
       - name: Run chart-testing (lint)
         run: ct lint
 
       - name: Create k8s Kind Cluster
         uses: helm/kind-action@v1.2.0
-        if: steps.list-changed.outputs.changed == 'true'
+        if: steps.lint.outputs.changed == 'true'
 
       - name: Run chart-testing (install)
         run: ct install
