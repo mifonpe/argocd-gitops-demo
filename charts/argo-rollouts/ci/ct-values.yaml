@@ -4,3 +4,4 @@ argo-cd:
 
 argo-rollouts:
   enabled: true
+  installCRDs: true
