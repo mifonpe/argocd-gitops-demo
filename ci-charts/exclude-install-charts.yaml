@@ -1,2 +1,2 @@
 exclude-charts:
-  - argocd-rollouts
+  - argo-rollouts
