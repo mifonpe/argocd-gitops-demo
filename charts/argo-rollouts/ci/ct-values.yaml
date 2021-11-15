@@ -1,6 +1,6 @@
 # Install Argo Suite Charts as a dependency.
-argo-cd:
-  enabled: true
-
 argo-rollouts:
   enabled: true
+  crdAnnotations:
+    helm.sh/hook: pre-install
+    hook-weight: "-5"

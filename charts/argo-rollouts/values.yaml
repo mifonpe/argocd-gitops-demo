@@ -3,9 +3,6 @@
 # Declare variables to be passed into your templates.
 
 # Install ArgoCD Chart as a dependency.
-argo-cd:
-  enabled: true
-
 argo-rollouts:
   enabled: true
 
