@@ -109,7 +109,7 @@ affinity: {}
 rollout:
   canary:
     maxSurge: "50%"
-    dynamicStableScale: "true"
+#    dynamicStableScale: "true"
     analysis:
       args:
       - name: ingress
