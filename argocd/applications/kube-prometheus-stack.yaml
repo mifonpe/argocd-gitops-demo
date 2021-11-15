@@ -12,3 +12,6 @@ spec:
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: prometheus
+    
+# If we run it locally, remember to apply:
+# kubectl patch ds monitoring-prometheus-node-exporter --type "json" -p '[{"op": "remove", "path" : "/spec/template/spec/containers/0/volumeMounts/2/mountPropagation"}]'
