@@ -51,5 +51,5 @@ jobs:
           echo "Skipping the following charts from the installation test:"
           for chart in $(echo ${{ steps.get-exclude-install-charts.outputs.result }}); do echo "  - $chart"; done
 
-          echo "Proceeding to install charts with changes"
+          echo "\nProceeding to install charts with changes."
           ct install --config ci-charts/ct.yaml --excluded-charts $(echo $excluded_charts)
