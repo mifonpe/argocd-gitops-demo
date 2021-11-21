@@ -20,9 +20,9 @@ provider "kubernetes" {
 ###############
 module "eks" {
   source          = "terraform-aws-modules/eks/aws"
-  version         = "12.2.0"
+  version         = "17.23.0"
   cluster_name    = local.eks_cluster_name
-  cluster_version = "1.19"
+  cluster_version = "1.21"
   subnets         = module.vpc.private_subnets
   enable_irsa     = true
 
@@ -42,7 +42,7 @@ module "eks" {
     workers-1 = {
       name             = "${local.eks_cluster_name}-workers-1"
       desired_capacity = 1
-      max_capacity     = 1
+      max_capacity     = 3
       min_capacity     = 1
 
       instance_type = "t3.medium"

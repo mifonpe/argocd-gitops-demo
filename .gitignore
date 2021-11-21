@@ -1,0 +1,17 @@
+# Terraform
+.terraform
+terraform.log
+terraform.tfstate*
+terraform.tfplan
+**/.terraform/*
+*terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+out.plan
+plan
+
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+.tmuxp.*
