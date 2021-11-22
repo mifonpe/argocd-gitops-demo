@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/mifonpe/argocd-gitops-demo
-    targetRevision: refactor-chart-releases #switch on main
+    targetRevision: main #switch on main
     path: charts/argo-rollouts
   destination:
     server: https://kubernetes.default.svc

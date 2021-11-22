@@ -25,7 +25,7 @@ jobs:
         export KUBECONFIG=/tmp/config
         kubectl apply -f argocd
       env:
-        KUBECTL_VERSION: "1.19"
+        KUBECTL_VERSION: "1.21"
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: 'eu-west-1'
