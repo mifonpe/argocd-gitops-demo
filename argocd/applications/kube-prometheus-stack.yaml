@@ -11,8 +11,8 @@ spec:
   project: default
   source:
     repoURL: https://github.com/mifonpe/argocd-gitops-demo
-    targetRevision: main #switch on main
-    path: values/kube-prometheus-stack
+    targetRevision: main 
+    path: argocd/values/kube-prometheus-stack
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: prometheus

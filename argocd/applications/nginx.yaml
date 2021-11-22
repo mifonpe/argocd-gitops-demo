@@ -11,8 +11,8 @@ spec:
   project: default
   source:
     repoURL: https://github.com/mifonpe/argocd-gitops-demo
-    targetRevision: main #switch on main
-    path: values/nginx
+    targetRevision: main 
+    path: argocd/values/nginx
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: nginx
