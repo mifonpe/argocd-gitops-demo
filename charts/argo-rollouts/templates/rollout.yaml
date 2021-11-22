@@ -121,5 +121,3 @@ spec:
       scaleDownDelayRevisionLimit: {{ .Values.rollout.blueGreen.scaleDownDelayRevisionLimit }}
       {{- end }}
     {{- end }}
-
-
