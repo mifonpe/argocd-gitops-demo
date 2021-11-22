@@ -1,7 +1,8 @@
 env:
-  secret:
-    BASIC_AUTH_USER: <user>
-    BASIC_AUTH_PASS: <pass>
+  existingSecret: chartmuseum-credentials
+  existingSecretMappings:
+    BASIC_AUTH_USER: user
+    BASIC_AUTH_PASS: pass
   open:
     DEBUG: true
     DISABLE_API: false
