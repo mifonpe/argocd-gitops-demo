@@ -11,8 +11,8 @@ spec:
   project: default
   source:
     repoURL: https://github.com/mifonpe/argocd-gitops-demo
-    targetRevision: main #switch on main
-    path: values/chartmuseum
+    targetRevision: main 
+    path: argocd/values/chartmuseum
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
