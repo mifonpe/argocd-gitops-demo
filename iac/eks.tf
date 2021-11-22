@@ -154,7 +154,7 @@ data "aws_iam_policy_document" "s3_access" {
       "s3:ListBucket"
     ]
 
-    resources = ["arn:aws:s3:::gitops-helm-summit-chartmuseum"]
+    resources = ["arn:aws:s3:::argocd-gitops-demo-chartmuseum"]
   }
 
   statement {
@@ -167,7 +167,7 @@ data "aws_iam_policy_document" "s3_access" {
         "s3:PutObject"
     ]
 
-    resources = ["arn:aws:s3:::gitops-helm-summit-chartmuseum/*"]
+    resources = ["arn:aws:s3:::argocd-gitops-demo-chartmuseum/*"]
    
   }
 }
