@@ -56,8 +56,8 @@ helm install my-release migueles/argo-rollouts -f values.yaml
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"nginx"` |  |
-| image.tag | string | `""` |  |
+| image.repository | string | `"argoproj/rollouts-demo"` |  |
+| image.tag | string | `"blue"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations."ingress.kubernetes.io/app-root" | string | `"/"` |  |
 | ingress.annotations."ingress.kubernetes.io/proxy-body-size" | string | `"100M"` |  |
@@ -86,7 +86,6 @@ helm install my-release migueles/argo-rollouts -f values.yaml
 | rollout.blueGreen | object | `{}` |  |
 | rollout.canary.analysis.args[0].name | string | `"ingress"` |  |
 | rollout.canary.analysis.args[0].value | string | `"argo-rollout"` |  |
-| rollout.canary.dynamicStableScale | bool | `true` |  |
 | rollout.canary.maxSurge | string | `"50%"` |  |
 | rollout.canary.steps[0].setWeight | int | `20` |  |
 | rollout.canary.steps[1].pause | object | `{}` |  |
