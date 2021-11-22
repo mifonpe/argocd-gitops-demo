@@ -17,6 +17,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: hashicorp/setup-terraform@v1
         with:
-          terraform_version: 0.14.9
+          terraform_version: 1.0.2
       - run: cd iac && terraform init
       - run: cd iac && terraform apply -auto-approve
