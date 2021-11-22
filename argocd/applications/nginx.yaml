@@ -10,9 +10,9 @@ spec:
       selfHeal: true
   project: default
   source:
-    repoURL: https://kubernetes.github.io/ingress-nginx
-    targetRevision: 4.0.9
-    chart: ingress-nginx 
+    repoURL: https://github.com/mifonpe/argocd-gitops-demo
+    targetRevision: main #switch on main
+    path: values/nginx
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: nginx

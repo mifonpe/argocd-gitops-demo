@@ -12,9 +12,7 @@ spec:
   source:
     repoURL: https://github.com/mifonpe/argocd-gitops-demo
     targetRevision: main #switch on main
-    path: charts/argo-rollouts
-    valueFiles: /tmp/git@github.com_{organization}_{rerpo_name}/dev/cluster-a/app-a/values.yaml
+    path: values/argo-rollouts
   destination:
     server: https://kubernetes.default.svc
     namespace: default
-    
