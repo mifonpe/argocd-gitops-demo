@@ -49,7 +49,6 @@ helm install my-release migueles/argo-rollouts -f values.yaml
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
-| argo-cd.enabled | bool | `true` |  |
 | argo-rollouts.enabled | bool | `true` |  |
 | autoscaling.enabled | bool | `false` |  |
 | autoscaling.maxReplicas | int | `100` |  |
