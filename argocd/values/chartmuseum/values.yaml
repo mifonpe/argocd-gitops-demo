@@ -1,6 +1,8 @@
 env:
   existingSecret: chartmuseum-credentials
   existingSecretMappings:
+    AWS_ACCESS_KEY_ID: aws_id
+    AWS_SECRET_ACCESS_KEY: aws_secret
     BASIC_AUTH_USER: user
     BASIC_AUTH_PASS: pass
   open:
