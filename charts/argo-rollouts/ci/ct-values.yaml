@@ -1,3 +1,4 @@
 # Install Argo Suite Charts as a dependency.
 argo-rollouts:
   enabled: true
+  installCRDs: true

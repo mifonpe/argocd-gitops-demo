@@ -1,0 +1,25 @@
+server:
+  ingress:
+    enabled: true
+    annotations: 
+      kubernetes.io/ingress.class: nginx
+    hosts:
+      - argocd.demo.io
+    paths:
+      - /
+      
+  ingressGrpc:
+    enabled: false
+    annotations: 
+      nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
+      kubernetes.io/ingress.class: nginx
+    hosts:
+      - argo-api.demo.io
+    paths:
+      - /
+
+configs:
+  secret:
+    argocdServerAdminPassword: <your-pwd-here>
+    argocdServerAdminPasswordMtime: "2021-08-10T06:28:41Z"
+

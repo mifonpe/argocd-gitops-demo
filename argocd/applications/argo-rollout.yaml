@@ -11,8 +11,8 @@ spec:
   project: default
   source:
     repoURL: https://github.com/mifonpe/argocd-gitops-demo
-      targetRevision: HEAD
-      path: values/argo-rollout
+    targetRevision: main #switch on main
+    path: charts/argo-rollouts
   destination:
-    server: 'https://kubernetes.default.svc'
+    server: https://kubernetes.default.svc
     namespace: default
