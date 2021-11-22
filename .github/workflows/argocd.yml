@@ -16,8 +16,8 @@ jobs:
     - uses: unfor19/install-aws-cli-action@v1
       with:
         version: 1
-    - run: sed -i  's/<user>/'"${{ secrets.CHARTMUSEUM_USER }}"'/g' argocd/applications/chartmuseum.yaml
-    - run: sed -i  's/<pass>/'"${{ secrets.CHARTMUSEUM_PASS }}"'/g' argocd/applications/chartmuseum.yaml
+    - run: sed -i  's/<user>/'"${{ secrets.CHARTMUSEUM_USER }}"'/g' argocd/values/values.yaml
+    - run: sed -i  's/<pass>/'"${{ secrets.CHARTMUSEUM_PASS }}"'/g' argocd/values/values.yaml
     - run: |
         curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
         sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
