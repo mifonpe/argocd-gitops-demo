@@ -19,7 +19,7 @@ jobs:
       - name: Install Helm Push plugin
         run: helm plugin install https://github.com/chartmuseum/helm-push
       - name: Adding our own Helm repository
-        run: helm repo add migueles http://a6412244e5de940e7ba0eb62fa02eb36-1300587414.eu-west-1.elb.amazonaws.com:8080
+        run: helm repo add migueles http://a16d83a87c4f54b73aca4646a3a6fab8-1634624571.eu-west-1.elb.amazonaws.com/:8080
       - name: Push charts to our own Helm repository
         env:
           HELM_REPO_USERNAME: ${{ secrets.CHARTMUSEUM_USER }}
