@@ -3,6 +3,7 @@ env:
     BASIC_AUTH_USER: <user>
     BASIC_AUTH_PASS: <pass>
   open:
+    DEBUG: true
     DISABLE_API: false
     STORAGE_AMAZON_BUCKET: argocd-gitops-demo-chartmuseum
     STORAGE_AMAZON_PREFIX: "/"
