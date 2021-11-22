@@ -4,6 +4,10 @@ metadata:
   name: kube-prometheus-stack
   namespace: argocd
 spec:
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
   project: default
   source:
     repoURL: https://prometheus-community.github.io/helm-charts

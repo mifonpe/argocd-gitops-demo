@@ -4,6 +4,10 @@ metadata:
   name: nginx-ingress-controller
   namespace: argocd
 spec:
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
   project: default
   source:
     repoURL: https://kubernetes.github.io/ingress-nginx
@@ -11,4 +15,4 @@ spec:
     chart: ingress-nginx 
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: nginx-ingress
+    namespace: nginx

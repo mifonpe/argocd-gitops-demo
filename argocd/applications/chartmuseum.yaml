@@ -4,6 +4,10 @@ metadata:
   name: chartmuseum
   namespace: argocd
 spec:
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
   project: default
   source:
     repoURL: 'https://chartmuseum.github.io/charts'
