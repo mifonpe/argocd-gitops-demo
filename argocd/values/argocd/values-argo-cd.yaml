@@ -1,7 +1,9 @@
 server:
+  configEnabled: true
   ingress:
     enabled: true
     annotations: 
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
       kubernetes.io/ingress.class: nginx
     hosts:
       - argocd.demo.io
@@ -17,9 +19,12 @@ server:
       - argo-api.demo.io
     paths:
       - /
+  config:
+    kustomize.buildOptions: --enable-helm
 
 configs:
   secret:
-    argocdServerAdminPassword: <your-pwd-here>
+    argocdServerAdminPassword: '<your-pwd-here>'
     argocdServerAdminPasswordMtime: "2021-08-10T06:28:41Z"
 
+  
