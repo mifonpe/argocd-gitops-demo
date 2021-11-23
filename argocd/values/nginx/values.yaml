@@ -1,9 +1,9 @@
 controller:
   metrics:
-    enabled: true
+    enabled: "true"
     serviceMonitor:
-      enabled: true
+      enabled: "true"
       scrapeInterval: 5s
 
 defaultBackend:
-  enabled: true
+  enabled: "true"
