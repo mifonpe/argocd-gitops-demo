@@ -3,7 +3,7 @@ kind: Kustomization
 
 helmCharts:
 - name: kube-prometheus-stack
-  version: 19.2.3
+  version: 12.8.0
   repo: 'https://prometheus-community.github.io/helm-charts'
   namespace: prometheus
   releaseName: kube-prometheus-stack
