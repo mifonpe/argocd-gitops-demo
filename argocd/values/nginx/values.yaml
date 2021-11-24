@@ -1,4 +1,10 @@
 controller:
+  podAnnotations:
+    prometheus.io/path: /metrics
+    prometheus.io/port: "10254"
+    prometheus.io/scheme: http
+    prometheus.io/scrape: "true"
+
   metrics:
     enabled: "true"
     serviceMonitor:
