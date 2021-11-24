@@ -1,1 +1,5 @@
 namespaceOverride: "prometheus"
+
+prometheusOperator:
+  tls:
+    enabled: false
