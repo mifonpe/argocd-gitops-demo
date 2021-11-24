@@ -15,4 +15,4 @@ spec:
     path: argocd/values/argo-rollouts
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: kube-system
+    namespace: argocd
