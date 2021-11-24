@@ -71,7 +71,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{- define "argo-rollout-demo.selectorLabels.preview" -}}
-{{ include "argo-rollout-demo.selectorLabels" . }}§
+{{ include "argo-rollout-demo.selectorLabels" . }}
 {{- end }}
 
 
