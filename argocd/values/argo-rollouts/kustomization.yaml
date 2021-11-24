@@ -3,7 +3,7 @@ kind: Kustomization
 
 helmCharts:
 - name: argo-rollouts
-  version: 0.1.3
+  version: 0.2.1
   repo: 'http://aef245f6ebad64a3a8de2104f82b2cab-9762976.eu-west-1.elb.amazonaws.com:8080'
   valuesFile: values.yaml
   namespace: argocd
