@@ -1,5 +1,5 @@
 {{- if .Values.ingressCanary.enabled -}}
-{{- $fullName := include "argo-rollouts.fullname.preview" . -}}
+{{- $fullName := include "argo-rollout-demo.fullname.preview" . -}}
 {{- $svcPort := .Values.service.port -}}
 {{- if and .Values.ingressCanary.className (not (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion)) }}
   {{- if not (hasKey .Values.ingressCanary.annotations "kubernetes.io/ingress.class") }}
@@ -17,7 +17,7 @@ kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-    {{- include "argo-rollouts.labels.preview" . | nindent 4 }}
+    {{- include "argo-rollout-demo.labels.preview" . | nindent 4 }}
   {{- with .Values.ingressCanary.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}

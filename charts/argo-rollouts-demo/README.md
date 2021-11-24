@@ -1,6 +1,6 @@
-# argo-rollouts
+# argo-rollout-demo
 
-![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: blue](https://img.shields.io/badge/AppVersion-blue-informational?style=flat-square)
+![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: blue](https://img.shields.io/badge/AppVersion-blue-informational?style=flat-square)
 
 This chart deploys a sample Argo Rollout application
 
@@ -17,32 +17,26 @@ helm repo add migueles http://a6412244e5de940e7ba0eb62fa02eb36-1300587414.eu-wes
 A simple install with default values:
 
 ```console
-helm install migueles/argo-rollouts
+helm install migueles/argo-rollout-demo
 ```
 
 To install the chart with the release name `my-release`:
 
 ```console
-helm install my-release migueles/argo-rollouts
+helm install my-release migueles/argo-rollout-demo
 ```
 
 To install with some set values:
 
 ```console
-helm install my-release migueles/argo-rollouts --set values_key1=value1 --set values_key2=value2
+helm install my-release migueles/argo-rollout-demo --set values_key1=value1 --set values_key2=value2
 ```
 
 To install with custom values file:
 
 ```console
-helm install my-release migueles/argo-rollouts -f values.yaml
+helm install my-release migueles/argo-rollout-demo -f values.yaml
 ```
-
-## Requirements
-
-| Repository | Name | Version |
-|------------|------|---------|
-| https://argoproj.github.io/argo-helm | argo-rollouts | 2.3.0 |
 
 ## Values
 
