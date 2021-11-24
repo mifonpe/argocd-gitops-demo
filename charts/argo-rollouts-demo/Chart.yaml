@@ -3,7 +3,7 @@ name: argo-rollout-demo
 description: |
   This chart deploys a sample Argo Rollout application
 type: application
-version: 0.2.2
+version: 0.2.3
 appVersion: blue
 maintainers:
 - name: mmingorance-dh
