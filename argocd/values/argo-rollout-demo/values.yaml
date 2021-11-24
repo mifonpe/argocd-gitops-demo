@@ -55,7 +55,7 @@ rollout:
     analysis:
       args:
       - name: ingress
-        value: argo-rollout
+        value: "argo-rollout-argo-rollout-demo"
     steps:
       - setWeight: 20
       - pause: {}
