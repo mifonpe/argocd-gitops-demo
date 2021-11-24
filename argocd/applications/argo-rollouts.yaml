@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-rollouts
+  namespace: argocd
+spec:
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  project: default
+  source:
+    repoURL: https://github.com/mifonpe/argocd-gitops-demo
+    targetRevision: main 
+    path: argocd/values/argo-rollouts
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: kube-system
