@@ -28,7 +28,7 @@ ingressCanary:
           pathType: ImplementationSpecific
 
 ingress:
-  enabled: false
+  enabled: true
   className: ""
   annotations:
     ingress.kubernetes.io/proxy-body-size: 100M
