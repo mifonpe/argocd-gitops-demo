@@ -58,10 +58,10 @@ rollout:
         value: "argo-rollout-argo-rollout-demo"
     steps:
       - setWeight: 20
-      - pause: {}
+      - pause: { duration: 80 }
       - setWeight: 40
-      - pause: { duration: 10 }
+      - pause: { duration: 30 }
       - setWeight: 60
-      - pause: { duration: 10 }
+      - pause: { duration: 15 }
       - setWeight: 80
       - pause: { duration: 10 }
