@@ -5,6 +5,7 @@ helmCharts:
 - name: kube-prometheus-stack
   includeCRDs: true
   version: 19.2.2
+  valuesFile: values.yaml
   repo: 'https://prometheus-community.github.io/helm-charts'
   namespace: prometheus
   releaseName: kube-prometheus-stack
