@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
 metadata:
-  name: {{ include "argo-rollouts.fullname" . }}-rollout-analysis
+  name: {{ include "argo-rollout-demo.fullname" . }}-rollout-analysis
 spec:
   {{- if .Values.rollout.canary.analysis.args }}
   args:

@@ -2,8 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 helmCharts:
-- name: argo-rollouts
-  version: 0.2.1
+- name: argo-rollout-demo
+  version: 0.2.2
   repo: 'http://aef245f6ebad64a3a8de2104f82b2cab-9762976.eu-west-1.elb.amazonaws.com:8080'
   valuesFile: values.yaml
   namespace: argocd

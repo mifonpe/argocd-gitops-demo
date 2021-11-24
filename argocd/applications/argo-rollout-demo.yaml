@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-rollout
+  name: argo-rollout-demo
   namespace: argocd
 spec:
   syncPolicy:
@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/mifonpe/argocd-gitops-demo
     targetRevision: main 
-    path: argocd/values/argo-rollouts
+    path: argocd/values/argo-rollout-demo
   destination:
     server: https://kubernetes.default.svc
     namespace: default

@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: {{ include "argo-rollouts.fullname" . }}
+  name: {{ include "argo-rollout-demo.fullname" . }}
   labels:
-    {{- include "argo-rollouts.labels" . | nindent 4 }}
+    {{- include "argo-rollout-demo.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "argo-rollouts.selectorLabels" . | nindent 6 }}
+      {{- include "argo-rollout-demo.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "argo-rollouts.selectorLabels" . | nindent 8 }}
+        {{- include "argo-rollout-demo.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "argo-rollouts.serviceAccountName" . }}
+      serviceAccountName: {{ include "argo-rollout-demo.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -62,7 +62,7 @@ spec:
   strategy:
     {{- if .Values.rollout.canary }}
     canary:
-      canaryService: {{ include "argo-rollouts.fullname.preview" . }}
+      canaryService: {{ include "argo-rollout-demo.fullname.preview" . }}
       maxSurge: {{ default "25%" .Values.rollout.canary.maxSurge }}
       maxUnavailable: {{ default "0" .Values.rollout.canary.maxUnavailable }}
       dynamicStableScale: {{ default "false" .Values.rollout.canary.dynamicStableScale }}
@@ -72,7 +72,7 @@ spec:
       {{- if .Values.rollout.canary.analysis }}
       analysis:
         templates:
-          - templateName: {{ include "argo-rollouts.fullname" . }}-rollout-analysis
+          - templateName: {{ include "argo-rollout-demo.fullname" . }}-rollout-analysis
         {{- if .Values.rollout.canary.analysis.args }}
         args:
         {{- range .Values.rollout.canary.analysis.args }}
@@ -92,8 +92,8 @@ spec:
       {{- if .Values.rollout.blueGreen }}
     blueGreen:
       autoPromotionEnabled: {{ default "false" .Values.rollout.blueGreen.autoPromotionEnabled }}
-      activeService: {{ include "argo-rollouts.fullname" . }}
-      previewService: {{ include "argo-rollouts.fullname" . }}-preview
+      activeService: {{ include "argo-rollout-demo.fullname" . }}
+      previewService: {{ include "argo-rollout-demo.fullname" . }}-preview
       {{- if .Values.rollout.blueGreen.prePromotionAnalysis }}
       prePromotionAnalysis:
         templates:
