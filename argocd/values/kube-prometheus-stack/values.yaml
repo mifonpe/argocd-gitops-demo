@@ -9,7 +9,7 @@ prometheus:
     additionalScrapeConfigs:
       - job_name: kube-etcd
         kubernetes_sd_configs:
-         - role: node
+          - role: node
         scheme: https
         tls_config:
           ca_file:   /etc/prometheus/secrets/etcd-client-cert/etcd-ca
