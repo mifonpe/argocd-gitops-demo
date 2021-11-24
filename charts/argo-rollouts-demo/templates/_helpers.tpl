@@ -51,7 +51,14 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Preview label
 */}}
 {{- define "argo-rollout-demo.labels.preview" -}}
+helm.sh/chart: {{ include "argo-rollout-demo.chart" . }}
 {{ include "argo-rollout-demo.selectorLabels.preview" . }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+preview: "true"
+app.kubernetes.io/preview: "true"
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
 {{- end }}
 
 {{/*
@@ -64,13 +71,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{- define "argo-rollout-demo.selectorLabels.preview" -}}
-{{ include "argo-rollout-demo.selectorLabels" . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-{{- end }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
-preview: "true"
-app.kubernetes.io/preview: "true"
+{{ include "argo-rollout-demo.selectorLabels" . }}§
 {{- end }}
 
 
