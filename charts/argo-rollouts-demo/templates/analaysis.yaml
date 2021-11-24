@@ -17,10 +17,10 @@ spec:
     provider:
       prometheus:
         address:  http://kube-prometheus-stack-prometheus.prometheus:9090
-        query: |
+        query: |-
           sum(
-            rate(nginx_ingress_controller_requests{ingress={{"{{args.ingress}}"}},status!~"[4-5].*"}[20s]))
+            rate(nginx_ingress_controller_requests{ingress={{"{{args.ingress}}"}},status!~"[4-5].*"}[1m]))
             /
-            sum(rate(nginx_ingress_controller_requests{ingress={{printf "{{args.ingress}}"}}}[20s])
+            sum(rate(nginx_ingress_controller_requests{ingress={{printf "{{args.ingress}}"}}}[1m])
           )
 {{- end }}
