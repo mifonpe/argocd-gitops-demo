@@ -51,7 +51,7 @@ resources:
 rollout:
   canary:
     maxSurge: "50%"
-    dynamicStableScale: true
+    dynamicStableScale: false
     analysis:
       args:
       - name: ingress
