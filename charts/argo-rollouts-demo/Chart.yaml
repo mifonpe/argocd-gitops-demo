@@ -1,9 +1,9 @@
 apiVersion: v2
-name: argo-rollouts
+name: argo-rollout-demo
 description: |
   This chart deploys a sample Argo Rollout application
 type: application
-version: 0.2.0
+version: 0.3.2
 appVersion: blue
 maintainers:
 - name: mmingorance-dh
@@ -15,9 +15,5 @@ keywords:
 - argocd
 - argocd-rollouts
 - rollouts
+- argo-rollout-demo
 home: https://github.com/mifonpe/argocd-gitops-demo
-dependencies:
-- name: argo-rollouts
-  version: 2.3.0
-  repository: https://argoproj.github.io/argo-helm
-  condition: argo-rollouts.enabled

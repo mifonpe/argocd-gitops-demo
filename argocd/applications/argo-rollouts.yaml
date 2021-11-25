@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-rollout
+  name: argo-rollouts
   namespace: argocd
 spec:
   syncPolicy:
@@ -14,5 +14,5 @@ spec:
     targetRevision: main 
     path: argocd/values/argo-rollouts
   destination:
-    server: https://kubernetes.default.svc
-    namespace: default
+    server: 'https://kubernetes.default.svc'
+    namespace: argocd
